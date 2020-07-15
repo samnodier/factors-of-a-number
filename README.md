@@ -6,10 +6,10 @@
 
 ## How to install factors
 
-#### 1. Download a copy of this factors file 1
+1. Download a copy of this factors file 1
 Click immediately on the link provided above the file downloading or go to the terminal and type `$ git clone https://github.com/sam0132nodier/factors-of-a-number` to not include **$**.
 
-#### 1. Create a `~/bin` repository 2
+1. Create a `~/bin` repository 2
 * Go to the terminal and type `$ cd ~` if you are not in `$HOME`.
 * Type `$ mkdir -p ~/bin` to create a bin directory in home directory.
 
