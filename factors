@@ -1,0 +1,108 @@
+#!/usr/bin/env python
+
+import sys
+
+parameter = sys.argv[1]
+
+if len(sys.argv) > 2:
+  numbers = sys.argv[2:]
+  # print(numbers)
+  # number = int(number)
+
+def prime_factors(num):
+	total_results = []
+	for i in range(len(num)):
+		number =  int(num[i])
+		factor = 2
+		a = []
+		a.append(number)
+		while factor <= number:
+			if number % factor == 0:
+				a.append(factor)
+				number = number / factor
+			else:
+				factor = factor + 1
+		total_results.append(a)
+	print(display_results(total_results))
+
+def factors(num):
+	total_results = []
+	for i in range(len(num)):
+		number = int(num[i])
+		factor = 1
+		a = []
+		a.append(number)
+		while factor <= number:
+			if number % factor == 0:
+				a.append(factor)
+			factor = factor + 1
+		total_results.append(a)
+	print(display_results(total_results))
+	
+def display_results(results):
+	#print(results)
+	list_of_results = []
+	for result in results:
+		for i in range(len(result)):
+			number = "[{}] ".format(result[0])
+			factors = str(result[1:])
+			factors = factors.replace(",", "")
+			factors = factors.replace("'", "")
+			res1 = number + factors
+		list_of_results.append(res1)
+	string_of_results = str(list_of_results)
+	string_of_results = string_of_results.replace("'", "")
+	string_of_results = string_of_results.replace("[[", "[")
+	string_of_results = string_of_results.replace("]]", "]")
+	string_of_results = string_of_results.replace(", ", "\n")
+	return(string_of_results)
+	
+def help():
+	print("""
+  ._____.   .______.  ._____.  ._______.  ______.     .______.      .______
+ / ____/   / _____/  / ____/  /__   __/  / _____/    / _____/      /  .___/
+| |       | |   | | | |          | |    | |   | |   | |   | |     /  /
+| |       | |   | | | |          | |    | |   | |   | |   | |     \  \\
+| :_____. | :___: | | |          | |    | |   | |   | :___: |      \  \\
+| .____/  | .___. | | |          | |    | |   | |   | .__  /        \  \\
+| |       | |   | | | |          | |    | |   | |   | |  \ \         \  \\
+| |       | |   | | | :_____.    | |    | :___| |   | |   | |   .____/  /
+|_|       |_|   |_|  \.____/     |_|     \.___./    |_|   |_|  /_______/
+	""")
+	print()
+	print("This is a function that prints factors of a number passed as a parameter.")
+	print("You can specify different arguments depending on the factors that you want.")
+	print("")
+	print("        -p --prime    Prime factors")
+	print("        -a --all      All factors")
+	print("        -h --help     Display this help message")
+	print("        -v --version  Output version information and exit")
+	print("")
+	print("Usage: python factors.py [-p] [-a] [-ap] [-pa] [-h] [arguments]")
+	
+
+if parameter == '-p':
+	prime_factors(numbers)
+elif parameter == '-a':
+	factors(numbers)
+elif parameter == '-pa':
+	print("")
+	print("Prime Factors")
+	prime_factors(numbers)
+	print("")
+	print("All Factors")
+	factors(numbers)
+elif parameter == '-ap':
+	print("")
+	print("All Numbers")
+	factors(numbers)
+	print("")
+	print("All Factors")
+	prime_factors(numbers)
+elif parameter == '-h' or parameter == '--help':
+	help()
+elif parameter == '-v' or parameter == '--version':
+	print("Factors v 0.01")
+else:
+	print("Invalid Syntax")
+	print("Try python factors.py -h or python factors -")
